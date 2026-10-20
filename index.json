@@ -26,6 +26,13 @@
       "category": "ai",
       "signerKeyId": "98EA7C6BA2D50118",
       "minGraphy": "0.3.0"
+    },
+    {
+      "id": "hello-graphy",
+      "name": "Hello GRAPHY",
+      "repo": "tatsunidas/graphy-next-plugin-hello",
+      "description": "検査用",
+      "signerKeyId": "1111111111111111"
     }
   ]
 }
