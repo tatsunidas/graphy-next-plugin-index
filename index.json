@@ -1,0 +1,31 @@
+{
+  "plugins": [
+    {
+      "id": "vis-monai",
+      "name": "MONAI Bundle (remote GPU)",
+      "repo": "tatsunidas/graphy-next-plugin-monai",
+      "description": "MONAI Bundle のセグメンテーションモデルを Google Colab などの外部 GPU で実行し、ラベルを ROI マネージャに表示して DICOM SEG として保存します。研究用で、診断機器ではありません。",
+      "category": "ai",
+      "signerKeyId": "98EA7C6BA2D50118",
+      "minGraphy": "0.4.0"
+    },
+    {
+      "id": "gemini-findings",
+      "name": "Gemini 所見推敲",
+      "repo": "tatsunidas/graphy-next-plugin-gemini-findings",
+      "description": "粗い所見と選んだ複数の画像を Gemini に渡し、読影レポートの日本語へ推敲させる教育用サンプルです。診断支援ではありません。デスクトップ版のみ。",
+      "category": "ai",
+      "signerKeyId": "98EA7C6BA2D50118",
+      "minGraphy": "0.1.8"
+    },
+    {
+      "id": "art",
+      "name": "Art of Imaging",
+      "repo": "tatsunidas/graphy-next-plugin-art",
+      "description": "表示中の DICOM 画像を、パブリックドメインの画家の画風の作品に変換し、鑑賞文を添えます。研究・教育・芸術表現のためで、診断機器ではありません。",
+      "category": "ai",
+      "signerKeyId": "98EA7C6BA2D50118",
+      "minGraphy": "0.3.0"
+    }
+  ]
+}
