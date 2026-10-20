@@ -1,0 +1,45 @@
+# index.json の機械検査。
+#  - 掲載の申請（PR）: pull_request_target で動かす。ワークフローと validate.py は常に main のものを使い、
+#    PR の index.json は「データ」として取り出して読むだけにする（PR のコードは実行しない。申請者が検査を書き換えて通すのを防ぐため）。
+#  - 週次: 掲載済みの全行のリリースを点検する（リリースが消えた・署名が壊れた行の早期発見。自動では削除しない）。
+name: Validate index
+
+on:
+  pull_request_target:
+    paths: ["index.json"]
+  schedule:
+    - cron: "17 3 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      # pull_request_target の既定は base（main）。PR のコードはチェックアウトしない。
+      - uses: actions/checkout@v4
+
+      - name: Install minisign
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq minisign
+
+      - name: Self test
+        run: python3 -I scripts/test_validate.py
+
+      - name: Validate (pull request)
+        if: github.event_name == 'pull_request_target'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.number }}
+        run: |
+          # PR の index.json だけを取り出す（実行はしない）。
+          git fetch --quiet origin "pull/${PR_NUMBER}/head:pr-head"
+          git show pr-head:index.json > "${RUNNER_TEMP}/pr-index.json"
+          python3 -I scripts/validate.py --index "${RUNNER_TEMP}/pr-index.json" --base-index index.json
+
+      - name: Validate (all entries)
+        if: github.event_name != 'pull_request_target'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 -I scripts/validate.py
