@@ -26,6 +26,15 @@
       "category": "ai",
       "signerKeyId": "98EA7C6BA2D50118",
       "minGraphy": "0.3.0"
+    },
+    {
+      "id": "vis-cxr-report",
+      "name": "Chest X-ray Report Draft (CXRMate)",
+      "repo": "tatsunidas/graphy-next-plugin-cxr-report",
+      "description": "胸部X線の正面像 1 枚（CR/DX）から、所見・印象の下書きと、文ごとの Grad-CAM を作ります（CXRMate・Apache-2.0）。この PC の計算機でだけ動き、画像は外へ出ません。研究用で、診断機器ではありません。生成文は誤りを含みます。",
+      "category": "ai",
+      "signerKeyId": "98EA7C6BA2D50118",
+      "minGraphy": "0.5.1"
     }
   ]
 }
