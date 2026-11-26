@@ -35,6 +35,15 @@
       "category": "ai",
       "signerKeyId": "98EA7C6BA2D50118",
       "minGraphy": "0.5.1"
+    },
+    {
+      "id": "research-stats",
+      "name": "Research Stats",
+      "repo": "tatsunidas/graphy-next-plugin-research-stats",
+      "description": "Radiomics の特徴量の表と臨床の表を結合し、予後との関係・2 群の判別・再現性・予測モデル（入れ子の交差検証）の解析を実行します。研究用で、診断機器ではありません。",
+      "category": "analysis",
+      "signerKeyId": "98EA7C6BA2D50118",
+      "minGraphy": "0.3.2"
     }
   ]
 }
